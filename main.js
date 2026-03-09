@@ -53,3 +53,20 @@
   // Kick off the animation loop
   runCycle();
 })();
+
+// Location-based pricing
+(function () {
+  fetch('https://ipapi.co/json/')
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      if (data.country_code === 'CA') {
+        var priceEl = document.getElementById('price-display');
+        if (priceEl) {
+          priceEl.innerHTML = '$34<sup>.99</sup> <span class="price-currency">CAD</span>';
+        }
+      }
+    })
+    .catch(function () {
+      // Silently fall back to default price on any network error
+    });
+})();

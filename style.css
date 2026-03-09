@@ -480,6 +480,7 @@ th {
   margin: .75rem 0 1.5rem;
 }
 .price sup { font-size: 1.4rem; vertical-align: super; }
+.price-currency { font-size: 1.2rem; font-weight: 700; vertical-align: middle; margin-left: .2rem; }
 
 .buy-features {
   list-style: none;

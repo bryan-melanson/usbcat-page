@@ -53,3 +53,79 @@
   // Kick off the animation loop
   runCycle();
 })();
+
+// Colour variant selectors
+(function () {
+  var cat        = document.getElementById('cat');
+  var stripeBtn  = document.querySelector('stripe-buy-button');
+
+  var selected = { body: 'white', led: 'yellow' };
+
+  var bodyColors = {
+    white:  { body: '#f5f5f0' },
+    gold:   { body: '#f9a825' }
+  };
+
+  var ledColors = {
+    white:  { color: '#ffffff', lt: 'rgba(255,255,255,.7)' },
+    red:    { color: '#d63031', lt: '#ff8a80' },
+    yellow: { color: '#f9a825', lt: '#fff176' }
+  };
+
+  function applyBody(value) {
+    cat.style.setProperty('--cat-body', bodyColors[value].body);
+  }
+
+  function applyLed(value) {
+    cat.style.setProperty('--led-color',    ledColors[value].color);
+    cat.style.setProperty('--led-color-lt', ledColors[value].lt);
+  }
+
+  function updateStripeReference() {
+    if (stripeBtn) {
+      stripeBtn.setAttribute('client-reference-id', 'body-' + selected.body + '_led-' + selected.led);
+    }
+  }
+
+  // Set initial reference
+  updateStripeReference();
+
+  document.querySelectorAll('.swatch').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var type  = btn.dataset.type;
+      var value = btn.dataset.value;
+
+      // Update active state within the same group
+      btn.closest('.color-swatches').querySelectorAll('.swatch').forEach(function (s) {
+        s.classList.remove('active');
+        s.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+
+      selected[type] = value;
+
+      if (type === 'body') applyBody(value);
+      if (type === 'led')  applyLed(value);
+
+      updateStripeReference();
+    });
+  });
+})();
+
+// Location-based pricing
+(function () {
+  fetch('https://ipapi.co/json/')
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      if (data.country_code === 'CA') {
+        var priceEl = document.getElementById('price-display');
+        if (priceEl) {
+          priceEl.innerHTML = '$34<sup>.99</sup> <span class="price-currency">CAD</span>';
+        }
+      }
+    })
+    .catch(function () {
+      // Silently fall back to default price on any network error
+    });
+})();

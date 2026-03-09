@@ -3,15 +3,19 @@
    ───────────────────────────────────────── */
 
 :root {
-  --red:    #d63031;
-  --gold:   #f9a825;
-  --gold-lt:#fff176;
-  --cream:  #fffde7;
-  --dark:   #1a0a00;
-  --mid:    #4a2e0e;
+  --red:    #7c3aed;
+  --gold:   #0d9488;
+  --gold-lt:#ccfbf1;
+  --cream:  #f1f5f9;
+  --dark:   #0f172a;
+  --mid:    #475569;
   --white:  #ffffff;
   --radius: 16px;
-  --shadow: 0 8px 40px rgba(0,0,0,.18);
+  --shadow: 0 8px 40px rgba(0,0,0,.12);
+  /* Cat customisation */
+  --cat-body:    #f5f5f0;
+  --led-color:   #f9a825;
+  --led-color-lt:#fff176;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -32,7 +36,7 @@ h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .4rem; }
 
 /* ── Hero ── */
 .hero {
-  background: linear-gradient(135deg, #b71c1c 0%, #d32f2f 50%, #e53935 100%);
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
   color: var(--white);
   padding: 5rem 1.5rem 4rem;
   position: relative;
@@ -43,7 +47,7 @@ h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .4rem; }
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 70% 30%, rgba(249,168,37,.18) 0%, transparent 60%);
+  background: radial-gradient(ellipse at 70% 30%, rgba(13,148,136,.22) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -92,7 +96,7 @@ h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .4rem; }
 
 .btn-primary {
   background: var(--gold);
-  color: var(--dark);
+  color: var(--white);
 }
 .btn-ghost {
   border: 2px solid rgba(255,255,255,.55);
@@ -117,7 +121,7 @@ h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .4rem; }
   position: relative;
   width: 160px;
   height: 180px;
-  background: #f5f5f0;
+  background: var(--cat-body);
   border-radius: 50% 50% 42% 42% / 55% 55% 45% 45%;
   margin: 0 auto;
   box-shadow: 0 10px 30px rgba(0,0,0,.3);
@@ -128,7 +132,7 @@ h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .4rem; }
   position: absolute;
   width: 38px;
   height: 44px;
-  background: #f5f5f0;
+  background: var(--cat-body);
   top: -22px;
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
@@ -179,13 +183,13 @@ h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .4rem; }
 
 /* Glowing eye state */
 .eye.glow {
-  background: var(--gold);
-  box-shadow: 0 0 12px 4px var(--gold-lt), 0 0 30px 8px var(--gold);
+  background: var(--led-color);
+  box-shadow: 0 0 12px 4px var(--led-color-lt), 0 0 30px 8px var(--led-color);
   animation: eyePulse .6s ease-in-out infinite alternate;
 }
 @keyframes eyePulse {
-  from { box-shadow: 0 0 8px 2px var(--gold-lt), 0 0 20px 6px var(--gold); }
-  to   { box-shadow: 0 0 18px 6px var(--gold-lt), 0 0 40px 14px var(--gold); }
+  from { box-shadow: 0 0 8px 2px var(--led-color-lt), 0 0 20px 6px var(--led-color); }
+  to   { box-shadow: 0 0 18px 6px var(--led-color-lt), 0 0 40px 14px var(--led-color); }
 }
 
 /* Nose */
@@ -278,7 +282,7 @@ h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .4rem; }
   position: absolute;
   width: 34px;
   height: 56px;
-  background: #f5f5f0;
+  background: var(--cat-body);
   border-radius: 40% 40% 50% 50%;
   bottom: 30px;
 }
@@ -306,7 +310,7 @@ h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .4rem; }
   height: 30px;
   background: var(--gold);
   border-radius: 50%;
-  border: 2px solid #f57f17;
+  border: 2px solid #0f766e;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -422,7 +426,7 @@ table {
   overflow: hidden;
   box-shadow: var(--shadow);
 }
-tr:nth-child(even) { background: #fff8e1; }
+tr:nth-child(even) { background: #eef2ff; }
 th, td {
   padding: .9rem 1.2rem;
   text-align: left;
@@ -432,7 +436,7 @@ th {
   width: 40%;
   font-weight: 700;
   color: var(--mid);
-  border-right: 2px solid #fff8e1;
+  border-right: 2px solid #eef2ff;
 }
 
 /* ── Buy ── */
@@ -440,7 +444,7 @@ th {
   padding: 5rem 1.5rem;
   display: flex;
   justify-content: center;
-  background: linear-gradient(160deg, #fff8e1 0%, var(--cream) 100%);
+  background: linear-gradient(160deg, #eef2ff 0%, var(--cream) 100%);
 }
 
 .buy-card {
@@ -480,6 +484,7 @@ th {
   margin: .75rem 0 1.5rem;
 }
 .price sup { font-size: 1.4rem; vertical-align: super; }
+.price-currency { font-size: 1.2rem; font-weight: 700; vertical-align: middle; margin-left: .2rem; }
 
 .buy-features {
   list-style: none;
@@ -500,6 +505,47 @@ th {
   color: #888;
 }
 .buy-note a { color: var(--red); }
+
+/* ── Variant selectors ── */
+.variant-selectors {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+.selector-group { display: flex; align-items: center; gap: .75rem; }
+.selector-label {
+  font-size: .8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--mid);
+  width: 4.5rem;
+  flex-shrink: 0;
+}
+.color-swatches { display: flex; gap: .5rem; }
+.swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  outline: 2px solid transparent;
+  cursor: pointer;
+  transition: outline-color .15s, transform .15s;
+  padding: 0;
+}
+.swatch:hover { transform: scale(1.1); }
+.swatch.active { outline: 2px solid var(--dark); outline-offset: 2px; }
+
+/* Body swatches */
+.swatch-body-white { background: #f5f5f0; border-color: #ccc; }
+.swatch-body-gold  { background: #f9a825; border-color: #f57f17; }
+
+/* LED swatches */
+.swatch-led-white  { background: #ffffff; border-color: #ccc; }
+.swatch-led-red    { background: #d63031; border-color: #b71c1c; }
+.swatch-led-yellow { background: #f9a825; border-color: #f57f17; }
 
 /* ── Footer ── */
 footer {

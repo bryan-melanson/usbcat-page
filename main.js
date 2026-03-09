@@ -56,7 +56,10 @@
 
 // Colour variant selectors
 (function () {
-  var cat = document.getElementById('cat');
+  var cat        = document.getElementById('cat');
+  var stripeBtn  = document.querySelector('stripe-buy-button');
+
+  var selected = { body: 'white', led: 'yellow' };
 
   var bodyColors = {
     white:  { body: '#f5f5f0' },
@@ -78,6 +81,15 @@
     cat.style.setProperty('--led-color-lt', ledColors[value].lt);
   }
 
+  function updateStripeReference() {
+    if (stripeBtn) {
+      stripeBtn.setAttribute('client-reference-id', 'body-' + selected.body + '_led-' + selected.led);
+    }
+  }
+
+  // Set initial reference
+  updateStripeReference();
+
   document.querySelectorAll('.swatch').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var type  = btn.dataset.type;
@@ -91,8 +103,12 @@
       btn.classList.add('active');
       btn.setAttribute('aria-pressed', 'true');
 
+      selected[type] = value;
+
       if (type === 'body') applyBody(value);
       if (type === 'led')  applyLed(value);
+
+      updateStripeReference();
     });
   });
 })();

@@ -54,6 +54,49 @@
   runCycle();
 })();
 
+// Colour variant selectors
+(function () {
+  var cat = document.getElementById('cat');
+
+  var bodyColors = {
+    white:  { body: '#f5f5f0' },
+    gold:   { body: '#f9a825' }
+  };
+
+  var ledColors = {
+    white:  { color: '#ffffff', lt: 'rgba(255,255,255,.7)' },
+    red:    { color: '#d63031', lt: '#ff8a80' },
+    yellow: { color: '#f9a825', lt: '#fff176' }
+  };
+
+  function applyBody(value) {
+    cat.style.setProperty('--cat-body', bodyColors[value].body);
+  }
+
+  function applyLed(value) {
+    cat.style.setProperty('--led-color',    ledColors[value].color);
+    cat.style.setProperty('--led-color-lt', ledColors[value].lt);
+  }
+
+  document.querySelectorAll('.swatch').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var type  = btn.dataset.type;
+      var value = btn.dataset.value;
+
+      // Update active state within the same group
+      btn.closest('.color-swatches').querySelectorAll('.swatch').forEach(function (s) {
+        s.classList.remove('active');
+        s.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+
+      if (type === 'body') applyBody(value);
+      if (type === 'led')  applyLed(value);
+    });
+  });
+})();
+
 // Location-based pricing
 (function () {
   fetch('https://ipapi.co/json/')

@@ -3,15 +3,15 @@
    ───────────────────────────────────────── */
 
 :root {
-  --red:    #d63031;
-  --gold:   #f9a825;
-  --gold-lt:#fff176;
-  --cream:  #fffde7;
-  --dark:   #1a0a00;
-  --mid:    #4a2e0e;
+  --red:    #7c3aed;
+  --gold:   #0d9488;
+  --gold-lt:#ccfbf1;
+  --cream:  #f1f5f9;
+  --dark:   #0f172a;
+  --mid:    #475569;
   --white:  #ffffff;
   --radius: 16px;
-  --shadow: 0 8px 40px rgba(0,0,0,.18);
+  --shadow: 0 8px 40px rgba(0,0,0,.12);
   /* Cat customisation */
   --cat-body:    #f5f5f0;
   --led-color:   #f9a825;
@@ -36,7 +36,7 @@ h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .4rem; }
 
 /* ── Hero ── */
 .hero {
-  background: linear-gradient(135deg, #b71c1c 0%, #d32f2f 50%, #e53935 100%);
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
   color: var(--white);
   padding: 5rem 1.5rem 4rem;
   position: relative;
@@ -47,7 +47,7 @@ h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .4rem; }
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 70% 30%, rgba(249,168,37,.18) 0%, transparent 60%);
+  background: radial-gradient(ellipse at 70% 30%, rgba(13,148,136,.22) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -96,7 +96,7 @@ h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .4rem; }
 
 .btn-primary {
   background: var(--gold);
-  color: var(--dark);
+  color: var(--white);
 }
 .btn-ghost {
   border: 2px solid rgba(255,255,255,.55);
@@ -310,7 +310,7 @@ h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .4rem; }
   height: 30px;
   background: var(--gold);
   border-radius: 50%;
-  border: 2px solid #f57f17;
+  border: 2px solid #0f766e;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -426,7 +426,7 @@ table {
   overflow: hidden;
   box-shadow: var(--shadow);
 }
-tr:nth-child(even) { background: #fff8e1; }
+tr:nth-child(even) { background: #eef2ff; }
 th, td {
   padding: .9rem 1.2rem;
   text-align: left;
@@ -436,7 +436,7 @@ th {
   width: 40%;
   font-weight: 700;
   color: var(--mid);
-  border-right: 2px solid #fff8e1;
+  border-right: 2px solid #eef2ff;
 }
 
 /* ── Buy ── */
@@ -444,7 +444,7 @@ th {
   padding: 5rem 1.5rem;
   display: flex;
   justify-content: center;
-  background: linear-gradient(160deg, #fff8e1 0%, var(--cream) 100%);
+  background: linear-gradient(160deg, #eef2ff 0%, var(--cream) 100%);
 }
 
 .buy-card {

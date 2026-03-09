@@ -1,0 +1,521 @@
+/* ─────────────────────────────────────────
+   Lucky USB Cat — Stylesheet
+   ───────────────────────────────────────── */
+
+:root {
+  --red:    #d63031;
+  --gold:   #f9a825;
+  --gold-lt:#fff176;
+  --cream:  #fffde7;
+  --dark:   #1a0a00;
+  --mid:    #4a2e0e;
+  --white:  #ffffff;
+  --radius: 16px;
+  --shadow: 0 8px 40px rgba(0,0,0,.18);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--cream);
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+/* ── Typography ── */
+h1 { font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 900; line-height: 1.1; }
+h2 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; text-align: center; margin-bottom: 2.5rem; }
+h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .4rem; }
+
+/* ── Hero ── */
+.hero {
+  background: linear-gradient(135deg, #b71c1c 0%, #d32f2f 50%, #e53935 100%);
+  color: var(--white);
+  padding: 5rem 1.5rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 30%, rgba(249,168,37,.18) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero-text {
+  flex: 1 1 340px;
+  max-width: 520px;
+}
+
+.tagline {
+  font-size: .85rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  opacity: .75;
+  margin-bottom: .5rem;
+}
+
+.sub {
+  margin: 1.2rem 0 2rem;
+  opacity: .9;
+  font-size: 1.05rem;
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-block;
+  padding: .75rem 1.8rem;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: .95rem;
+  text-decoration: none;
+  transition: transform .15s, box-shadow .15s;
+  margin-right: .75rem;
+  margin-bottom: .5rem;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--dark);
+}
+.btn-ghost {
+  border: 2px solid rgba(255,255,255,.55);
+  color: var(--white);
+}
+.btn-ghost:hover { background: rgba(255,255,255,.12); }
+.btn-large { font-size: 1.1rem; padding: 1rem 2.5rem; }
+
+/* ── CSS Lucky Cat ── */
+.cat-wrap {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.cat {
+  position: relative;
+  width: 200px;
+}
+
+.cat-body {
+  position: relative;
+  width: 160px;
+  height: 180px;
+  background: #f5f5f0;
+  border-radius: 50% 50% 42% 42% / 55% 55% 45% 45%;
+  margin: 0 auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,.3);
+}
+
+/* Ears */
+.ear {
+  position: absolute;
+  width: 38px;
+  height: 44px;
+  background: #f5f5f0;
+  top: -22px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.ear::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 26px;
+  background: #ffb3ba;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.ear-left  { left: 14px; }
+.ear-right { right: 14px; }
+
+/* Face */
+.cat-face {
+  position: absolute;
+  width: 100%;
+  top: 24px;
+}
+
+/* Eyes */
+.eye {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  background: #444;
+  border-radius: 50%;
+  top: 20px;
+  overflow: hidden;
+  transition: background .3s;
+}
+.eye::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  top: 4px;
+  left: 4px;
+}
+.eye-left  { left: 30px; }
+.eye-right { right: 30px; }
+
+/* Glowing eye state */
+.eye.glow {
+  background: var(--gold);
+  box-shadow: 0 0 12px 4px var(--gold-lt), 0 0 30px 8px var(--gold);
+  animation: eyePulse .6s ease-in-out infinite alternate;
+}
+@keyframes eyePulse {
+  from { box-shadow: 0 0 8px 2px var(--gold-lt), 0 0 20px 6px var(--gold); }
+  to   { box-shadow: 0 0 18px 6px var(--gold-lt), 0 0 40px 14px var(--gold); }
+}
+
+/* Nose */
+.nose {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 8px;
+  background: #e91e8c;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+
+/* Mouth */
+.mouth {
+  position: absolute;
+  top: 58px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 9px;
+  border: 2px solid #c2185b;
+  border-top: none;
+  border-radius: 0 0 50% 50%;
+}
+
+/* Whiskers */
+.whiskers {
+  position: absolute;
+  top: 52px;
+  left: 0;
+  width: 100%;
+}
+.whiskers span {
+  display: block;
+  position: absolute;
+  height: 1.5px;
+  background: rgba(0,0,0,.25);
+  border-radius: 2px;
+}
+.whiskers span:nth-child(1) { width: 38px; left: 4px;  top: 0px;  transform: rotate(-10deg); }
+.whiskers span:nth-child(2) { width: 38px; left: 4px;  top: 8px;  transform: rotate(0deg); }
+.whiskers span:nth-child(3) { width: 38px; left: 4px;  top: 16px; transform: rotate(10deg); }
+.whiskers span:nth-child(4) { width: 38px; right: 4px; top: 0px;  transform: rotate(10deg); }
+.whiskers span:nth-child(5) { width: 38px; right: 4px; top: 8px;  transform: rotate(0deg); }
+.whiskers span:nth-child(6) { width: 38px; right: 4px; top: 16px; transform: rotate(-10deg); }
+
+/* Bib */
+.bib {
+  position: absolute;
+  bottom: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  background: var(--red);
+  border-radius: 50% 50% 40% 40% / 30% 30% 50% 50%;
+  padding: 8px 0 14px;
+  text-align: center;
+}
+.bib-text {
+  display: block;
+  color: var(--gold);
+  font-weight: 900;
+  font-size: .75rem;
+  letter-spacing: .1em;
+}
+.bell {
+  width: 14px;
+  height: 14px;
+  background: var(--gold);
+  border-radius: 50% 50% 50% 50% / 50% 50% 60% 60%;
+  margin: 4px auto 0;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0,0,0,.3);
+}
+.bell::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 4px;
+  background: var(--gold);
+}
+
+/* Arms */
+.arm {
+  position: absolute;
+  width: 34px;
+  height: 56px;
+  background: #f5f5f0;
+  border-radius: 40% 40% 50% 50%;
+  bottom: 30px;
+}
+.arm-left  { left: -18px;  transform: rotate(20deg); }
+.arm-right {
+  right: -18px;
+  transform: rotate(-20deg);
+  transform-origin: bottom center;
+}
+.arm-right.waving {
+  animation: wave 0.6s ease-in-out infinite alternate;
+}
+@keyframes wave {
+  from { transform: rotate(-20deg); }
+  to   { transform: rotate(-60deg); }
+}
+
+/* Coin */
+.coin {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%) translateX(36px);
+  width: 30px;
+  height: 30px;
+  background: var(--gold);
+  border-radius: 50%;
+  border: 2px solid #f57f17;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .95rem;
+  color: var(--dark);
+  font-weight: 900;
+  box-shadow: 0 2px 6px rgba(0,0,0,.2);
+}
+
+/* USB plug */
+.usb-plug {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.usb-body {
+  width: 32px;
+  height: 20px;
+  background: #9e9e9e;
+  border-radius: 3px 3px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .6rem;
+  color: #fff;
+}
+.usb-prong {
+  width: 18px;
+  height: 10px;
+  background: #bdbdbd;
+  border-radius: 0 0 2px 2px;
+}
+
+/* ── Features ── */
+.features {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1.5rem;
+}
+
+.feature-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  box-shadow: var(--shadow);
+  border-top: 4px solid var(--gold);
+  transition: transform .2s;
+}
+.feature-card:hover { transform: translateY(-4px); }
+
+.feature-icon {
+  font-size: 2.2rem;
+  margin-bottom: .75rem;
+}
+
+/* ── How It Works ── */
+.how-it-works {
+  background: var(--red);
+  color: var(--white);
+  padding: 5rem 1.5rem;
+}
+.how-it-works h2 { color: var(--gold); }
+
+.steps {
+  max-width: 700px;
+  margin: 0 auto;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.steps li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.step-num {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 3rem;
+}
+
+.steps h3 { font-size: 1.15rem; }
+.steps p  { opacity: .85; }
+
+/* ── Specs ── */
+.specs {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+tr:nth-child(even) { background: #fff8e1; }
+th, td {
+  padding: .9rem 1.2rem;
+  text-align: left;
+  font-size: .95rem;
+}
+th {
+  width: 40%;
+  font-weight: 700;
+  color: var(--mid);
+  border-right: 2px solid #fff8e1;
+}
+
+/* ── Buy ── */
+.buy {
+  padding: 5rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(160deg, #fff8e1 0%, var(--cream) 100%);
+}
+
+.buy-card {
+  background: var(--white);
+  border-radius: 24px;
+  padding: 3rem 2.5rem;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,.15);
+  position: relative;
+}
+
+.buy-badge {
+  display: inline-block;
+  background: var(--red);
+  color: var(--white);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: .3rem .9rem;
+  border-radius: 100px;
+  margin-bottom: 1rem;
+}
+
+.buy-card h2 {
+  font-size: 1.8rem;
+  margin-bottom: .5rem;
+}
+
+.price {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--red);
+  line-height: 1;
+  margin: .75rem 0 1.5rem;
+}
+.price sup { font-size: 1.4rem; vertical-align: super; }
+
+.buy-features {
+  list-style: none;
+  text-align: left;
+  margin-bottom: 2rem;
+}
+.buy-features li {
+  padding: .4rem 0;
+  border-bottom: 1px solid #f5f5f5;
+  font-size: .95rem;
+  color: var(--mid);
+}
+.buy-features li::marker { display: none; }
+
+.buy-note {
+  margin-top: 1rem;
+  font-size: .85rem;
+  color: #888;
+}
+.buy-note a { color: var(--red); }
+
+/* ── Footer ── */
+footer {
+  background: var(--dark);
+  color: rgba(255,255,255,.6);
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: .875rem;
+}
+footer p + p { margin-top: .4rem; }
+.footer-sub { opacity: .5; font-size: .8rem; }
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .hero-inner { gap: 2.5rem; }
+  .cat-body { width: 130px; height: 148px; }
+  .ear { width: 30px; height: 36px; }
+  .arm { width: 28px; height: 46px; }
+}

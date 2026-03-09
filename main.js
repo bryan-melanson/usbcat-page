@@ -90,18 +90,10 @@
   // Set initial reference
   updateStripeReference();
 
-  document.querySelectorAll('.swatch').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var type  = btn.dataset.type;
-      var value = btn.dataset.value;
-
-      // Update active state within the same group
-      btn.closest('.color-swatches').querySelectorAll('.swatch').forEach(function (s) {
-        s.classList.remove('active');
-        s.setAttribute('aria-pressed', 'false');
-      });
-      btn.classList.add('active');
-      btn.setAttribute('aria-pressed', 'true');
+  document.querySelectorAll('.variant-select').forEach(function (sel) {
+    sel.addEventListener('change', function () {
+      var type  = sel.dataset.type;
+      var value = sel.value;
 
       selected[type] = value;
 

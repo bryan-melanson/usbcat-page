@@ -145,19 +145,19 @@
       <p class="price" id="price-display">$34<sup>.99</sup></p>
       <div class="variant-selectors">
         <div class="selector-group">
-          <span class="selector-label">Body</span>
-          <div class="color-swatches">
-            <button class="swatch swatch-body-white active" data-type="body" data-value="white" title="White" aria-pressed="true"></button>
-            <button class="swatch swatch-body-gold" data-type="body" data-value="gold" title="Gold" aria-pressed="false"></button>
-          </div>
+          <label class="selector-label" for="select-body">Body</label>
+          <select class="variant-select" id="select-body" data-type="body">
+            <option value="white" selected>White</option>
+            <option value="gold">Gold</option>
+          </select>
         </div>
         <div class="selector-group">
-          <span class="selector-label">LED</span>
-          <div class="color-swatches">
-            <button class="swatch swatch-led-white" data-type="led" data-value="white" title="White" aria-pressed="false"></button>
-            <button class="swatch swatch-led-red" data-type="led" data-value="red" title="Red" aria-pressed="false"></button>
-            <button class="swatch swatch-led-yellow active" data-type="led" data-value="yellow" title="Yellow" aria-pressed="true"></button>
-          </div>
+          <label class="selector-label" for="select-led">LED</label>
+          <select class="variant-select" id="select-led" data-type="led">
+            <option value="white">White</option>
+            <option value="red">Red</option>
+            <option value="yellow" selected>Yellow</option>
+          </select>
         </div>
       </div>
       <ul class="buy-features">

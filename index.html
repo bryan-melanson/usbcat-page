@@ -152,7 +152,10 @@
         <li>&#10003; Gift box packaging</li>
         <li>&#10003; Free shipping worldwide</li>
       </ul>
-      <a href="mailto:orders@usbcat.example" class="btn btn-primary btn-large">Order Now</a>
+      <stripe-buy-button
+        buy-button-id="buy_btn_1T8v2CFLhmvcF5KJYfQqNVte"
+        publishable-key="pk_live_51T8uqKFLhmvcF5KJeSTfNB4renQ4StKCO14INkLik95EJGUSyqmJB5mK9FK1zz7u9CfDxoBB0tTF3kUkMLWEp64V00aWg2V0An"
+      ></stripe-buy-button>
       <p class="buy-note">Questions? Email <a href="mailto:hello@usbcat.example">hello@usbcat.example</a></p>
     </div>
   </section>
@@ -162,6 +165,7 @@
     <p class="footer-sub">Made with love for cats and data alike.</p>
   </footer>
 
+  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
